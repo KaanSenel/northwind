@@ -4,6 +4,7 @@ import com.example.northwind.business.abstracts.ProductService;
 import com.example.northwind.core.utilities.results.DataResult;
 import com.example.northwind.core.utilities.results.Result;
 import com.example.northwind.entities.concretes.Product;
+import com.example.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -79,6 +80,11 @@ public class ProductsController {
     public DataResult<List<Product>> getAllSortedDesc(){
         //Pageable ve Sort sınıflarını bi oku az
         return this.productService.getAllSortedReverse();
+    }
+
+    @GetMapping("/getProductWithCategoryDetails")
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+        return this.productService.getProductWithCategoryDetails();
     }
 
 }

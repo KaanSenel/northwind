@@ -7,6 +7,7 @@ import com.example.northwind.core.utilities.results.SuccessDataResult;
 import com.example.northwind.core.utilities.results.SuccessResult;
 import com.example.northwind.dataAccess.abstracts.ProductDao;
 import com.example.northwind.entities.concretes.Product;
+import com.example.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -98,5 +99,11 @@ public class ProductManager implements ProductService {
     public DataResult<List<Product>> getByNameAndCategory(String name, int id) {
         return new SuccessDataResult<>(this.productDao.getByNameAndCategory(name,id),
                 "Veriler getirildi");
+    }
+
+    @Override
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return new SuccessDataResult<>(this.productDao.getProductWithCategoryDetails(),
+                "Veriler getirildi.");
     }
 }

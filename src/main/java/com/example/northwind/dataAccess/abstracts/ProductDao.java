@@ -1,6 +1,7 @@
 package com.example.northwind.dataAccess.abstracts;
 
 import com.example.northwind.entities.concretes.Product;
+import com.example.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -23,4 +24,9 @@ public interface ProductDao extends JpaRepository<Product,Integer>{
 
     @Query("From Product where categoryName=:name and category.categoryId=:id")
     List<Product> getByNameAndCategory(String name,int id);
+
+    @Query("Select new com.example.northwind.entities.dtos." +
+           "ProductWithCategoryDto(p.id, p.productName, c.categoryName) " +
+           "from Category c inner join c.products p")
+    List<ProductWithCategoryDto> getProductWithCategoryDetails();
 }

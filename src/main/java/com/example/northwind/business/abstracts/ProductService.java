@@ -3,6 +3,7 @@ package com.example.northwind.business.abstracts;
 import com.example.northwind.core.utilities.results.DataResult;
 import com.example.northwind.core.utilities.results.Result;
 import com.example.northwind.entities.concretes.Product;
+import com.example.northwind.entities.dtos.ProductWithCategoryDto;
 
 import java.util.List;
 
@@ -31,4 +32,7 @@ public interface ProductService {
     DataResult<List<Product>> getByProductNameStartsWith(String name);
 
     DataResult<List<Product>> getByNameAndCategory(String name,int id);
+
+    DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails();
+
 }
